@@ -1,7 +1,7 @@
 :root {
     --light-red: #FC654E;
     --dark-grey: #444444;
-    --rounded-corner: 1em;
+    --rounded-corner: 0.5em;
     --standard-height: 2.5em;
     --standard-width: 12em;
 }
