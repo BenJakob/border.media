@@ -11,13 +11,3 @@
 .welcome {
     text-align: center;
 }
-
-.welcome-buttons {
-    background-color: var(--light-red);
-    border: 1px solid black;
-    border-radius: var(--rounded-corner);
-    color: white;
-    height: var(--standard-height);
-    margin: 1em;
-    width: var(--standard-width);
-}

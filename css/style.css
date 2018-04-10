@@ -16,6 +16,11 @@ h2 {
     font-size: 2em;
 }
 
+input {
+    height: var(--standard-height);
+    border-radius: var(--rounded-corner);
+}
+
 .navbar-brand, .navbar-brand:hover, .navbar-brand:visited {
     color: var(--light-red) !important;
     font-weight: bold;
@@ -36,4 +41,18 @@ h2 {
 
 .right-item {
     margin-right: 2em;
+}
+
+.btn-primary {
+    background-color: var(--light-red);
+    border: 1px solid black;
+    border-radius: var(--rounded-corner);
+    color: white;
+    height: var(--standard-height);
+    margin: 1em;
+    width: var(--standard-width);
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--light-red) !important;
 }
