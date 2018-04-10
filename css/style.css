@@ -16,21 +16,24 @@ h2 {
     font-size: 2em;
 }
 
-button {
-    background-color: var(--light-red);
-    border: 1px solid black;
-    border-radius: var(--rounded-corner);
-    color: white;
-    height: var(--standard-height);
-    width: var(--standard-width);
-}
-
-.navbar-brand, .navbar-brand:hover {
-    color: var(--light-red);
-    font-size: 3em;
+.navbar-brand, .navbar-brand:hover, .navbar-brand:visited {
+    color: var(--light-red) !important;
     font-weight: bold;
 }
 
-.navbar-collapse a {
-    color: var(--dark-grey);
+.navbar a {
+    color: var(--dark-grey) !important;
+}
+
+.navbar img {
+    height: 20px;
+    width: 20px;
+}
+
+.navbar-brand {
+    margin-left: 2em;
+}
+
+.right-item {
+    margin-right: 2em;
 }
