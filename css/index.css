@@ -13,6 +13,11 @@
 }
 
 .welcome-buttons {
-    margin-left: 1em;
-    margin-right: 1em;
+    background-color: var(--light-red);
+    border: 1px solid black;
+    border-radius: var(--rounded-corner);
+    color: white;
+    height: var(--standard-height);
+    margin: 1em;
+    width: var(--standard-width);
 }
