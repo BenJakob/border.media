@@ -35,12 +35,8 @@ input {
     width: 20px;
 }
 
-.navbar-brand {
-    margin-left: 2em;
-}
-
 .right-item {
-    margin-right: 2em;
+    margin-right: 3em;
 }
 
 .btn-primary {
