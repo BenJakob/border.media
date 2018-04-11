@@ -1,0 +1,35 @@
+h2 {
+    text-align:left;
+}
+
+p {
+    font-size: 0.8em;
+}
+
+.user-icon {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.equipment-row {
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.search-equipment {
+    padding-top: 33px;
+    margin-bottom: 16px;
+}
+
+.equipment-img {
+    height: 140px;
+    width: 140px;
+}
+
+.btn-primary {
+    height: auto;
+    width: auto;
+    margin: 0;
+    padding: 0.3em;
+}
