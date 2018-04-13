@@ -52,3 +52,20 @@ input {
 .btn-primary:hover, .btn-primary:active {
     background-color: var(--light-red) !important;
 }
+
+.spacerleft5 {
+    margin-left: 5px;
+}
+
+.spacerleft10 {
+    margin-left: 10px;
+}
+
+.spacerleft15 {
+    margin-left: 15px;
+}
+
+.btn-admin {
+    background-color: #444444;
+    border-radius: var(--rounded-corner);
+}
