@@ -69,3 +69,6 @@ input {
     background-color: #444444;
     border-radius: var(--rounded-corner);
 }
+.left-item{
+    margin-left: 2em;
+}
