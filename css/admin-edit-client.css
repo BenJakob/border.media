@@ -1,0 +1,14 @@
+.btn-secondary {
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: var(--rounded-corner);
+    color: white;
+    height: var(--standard-height);
+
+    width: var(--standard-width);
+}
+
+.edit-img {
+    height: 350px;
+    width: 350px;
+}

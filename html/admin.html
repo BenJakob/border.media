@@ -20,20 +20,27 @@
         </button>
         <div class="collapse navbar-collapse" role="navigation">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="equipment.html">Equipment</a>
-                <a class="nav-item nav-link" href="login.html">Login</a>
+                <a class="nav-item nav-link" href="admin-equipment.html">Equipment</a>
+                <a class="nav-item nav-link" href="admin-clients.html">Kunden</a>
+                <a class="nav-item nav-link" href="login.html">Logout</a>
             </div>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="profil.html">Max Mustermann</a>
+                <div>
+                    <a class="nav-item nav-link" href="profil.html">Max Mustermann</a>
+                    <div class="spacerleft10">
+                        <font color="red">Verleiher</font>
+                    </div>
+
+                </div>
                 <a class="nav-item nav-link" href="profil.html">
                     <img class="user-icon" src="../img/user.svg" alt="icon-user">
                 </a>
             </div>
 
     </nav>
-    <div class="container pt-5">
+    <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-sm-6 mx-auto">
                 <div class="card">
                     <div class="card-header text-center">
                         <h3 class="mb-0">Administrationbereich</h3>
@@ -41,10 +48,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                                <img class="user-icon" src="../img/clipboard.svg" alt="icon-user" style="width:100%">
+                                <img class="" src="../img/clipboard.svg" alt="icon-user" style="width:100%">
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                                <img class="user-icon" src="../img/user.svg" alt="icon-user" style="width:100%">
+                                <img class="" src="../img/user.svg" alt="icon-user" style="width:100%">
                             </div>
                         </div>
                         <div class="row ">
@@ -52,14 +59,13 @@
                                 <a href="admin-equipment.html" class="btn btn-primary" role="button">Equipment verwalten</a>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                                <a href="admin-edit-client.html" class="btn btn-primary" role="button">Kunden verwalten</a>
+                                <a href="admin-clients.html" class="btn btn-primary" role="button">Kunden verwalten</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 <footer>
@@ -70,4 +76,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 </footer>
+
 </html>

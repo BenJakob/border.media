@@ -1,1 +1,107 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>borgdir.media</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/equipment.css" />
+    <link rel="stylesheet" type="text/css" href="../css/admin-edit-client.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <a class="navbar-brand" href="index.html">borgdir.media</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" role="navigation">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="admin-equipment.html">Equipment</a>
+                <a class="nav-item nav-link" href="admin-clients.html">Kunden</a>
+                <a class="nav-item nav-link" href="login.html">Logout</a>
+            </div>
+            <div class="navbar-nav">
+                <div>
+                    <a class="nav-item nav-link" href="profil.html">Max Mustermann</a>
+                    <div class="spacerleft10">
+                        <font color="red">Verleiher</font>
+                    </div>
+
+                </div>
+                <div>
+                    <a class="nav-item nav-link" href="profil.html">
+                        <img class="user-icon" src="../img/user.svg" alt="icon-user">
+                    </a>
+                </div>
+            </div>
+    </nav>
+<div class="container-fluid">
+    <div class="col-sm-6">
+        <h3 class="mb-2">Profil bearbeiten</h3>
+        <div>Kunden ID:
+            <font color="red">xx-xxx</font> | Status:
+            <font color="red">xxxxx</font>
+        </div>
+    </div>
+    <div class="col-sm-6 " style="height:50px;">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="">
+                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    <div class="form-group col-sm-12">
+                        <label for="bezeichnung">Benutzername:</label>
+                        <input type="text" class="form-control form-control-lg" name="username" id="username" required="">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="bezeichnung">Emailadresse</label>
+                        <input type="text" class="form-control form-control-lg" name="email" id="email" required="">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="bezeichnung">Passwort:</label>
+                        <input type="text" class="form-control form-control-lg" name="passwort" id="passwort" required="">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="bezeichnung">Passwort wiederholen:</label>
+                        <input type="text" class="form-control form-control-lg" name="passwortre" id="passwortre" required="">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="row col-sm-7">
+                    <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <button type="button" name="savebutton" class="btn-primary">Speichern</button>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" name="kontoSperren" class="btn-secondary">Konto sperren</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-2">
+            <div>
+                <img class="edit-img" src="../img/user.svg" alt="img">
+            </div>
+            <div class="col-sm-8 row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-11"><button type="button" name="button" class="btn-primary btn-block">Bild hochladen</button></div>
+                    
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+</footer>
+</html>

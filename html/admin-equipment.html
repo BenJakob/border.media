@@ -21,8 +21,9 @@
         </button>
         <div class="collapse navbar-collapse" role="navigation">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="equipment.html">Equipment</a>
-                <a class="nav-item nav-link" href="login.html">Login</a>
+                <a class="nav-item nav-link" href="admin-equipment.html">Equipment</a>
+                <a class="nav-item nav-link" href="admin-clients.html">Kunden</a>
+                <a class="nav-item nav-link" href="login.html">Logout</a>
             </div>
             <div class="navbar-nav">
                 <div>
@@ -39,275 +40,271 @@
                 </div>
             </div>
     </nav>
-
-    <div class="col-sm-6">
-        <h3 class="mb-2">Equipment verwalten</h3>
-    </div>
-    <div class="row">
-        <div class="col-sm-1 spacerleft15">
-            <a href="admin-add.html" class="btn btn-primary" role="button">Equipment Hinzufügen</a>
+    <div class="container-fluid">
+        <div class="">
+            <h3 class="">Equipment verwalten</h3>
         </div>
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-2">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle=".dropdown-menu" aria-haspopup="true" aria-expanded="false">Alle</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="row">
+            <div class="col-sm-1">
+                <a href="admin-add.html" class="btn btn-primary" role="button">Equipment Hinzufügen</a>
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle=".dropdown-menu" aria-haspopup="true"
+                            aria-expanded="false">Alle</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with dropdown button">
             </div>
         </div>
-    </div>
-    <div class="row spacerleft5">
-        <div class="col-sm-3">Equipment</div>
-        <div class="col-sm-4">Beschreibung</div>
-        <div class="col-sm-4">Status</div>
-    </div>
-    <div class="row spacerleft5">
-        <div class="col-sm-12">
-            <hr size="30">
+        <div class="row col-sm-12">
+            <div class="col-sm-3">Equipment</div>
+            <div class="col-sm-4">Beschreibung</div>
+            <div class="col-sm-4">Status</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-1">
-                    <img class="img-fluid" src="../img/video_camera.png" alt="img">
-                </div>
-                <div class="col-sm-2 spacerleft15">
-                    <div>
-                        <h3>Kamera 1</h3>
-                    </div>
-                    <div>Inv.-Nr.: 123456789</div>
-                    <div>Lagerort:
-                        <font color="red">Schrank</font>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
-                        blablabla..... Film aufzeichnet</p>
-                    <div class="row">
-
-                    </div>
-                </div>
-
-                <div class="col-sm-1 spacerleft10">
-                    <div class="row">
-                        <div>Entliehen an:</div>
-                        <div>
-                            <h5>Max Mustermann</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-1 spacerleft15">
-                    <div class="row">
-                        <div>Rückgabe: </div>
-                        <div>
-                            <h5>
-                                <font color="red">25.09.2018</font>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/trash-white.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/pencil-white.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-
+        <div class="row">
+            <div class="col-sm-11">
+                <hr size="30">
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-1">
-                    <img class="img-fluid" src="../img/video_camera.png" alt="img">
-                </div>
-                <div class="col-sm-2 spacerleft15">
-                    <div>
-                        <h3>Kamera 1</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img class="img-fluid" src="../img/video_camera.png" alt="img">
                     </div>
-                    <div>Inv.-Nr.: 123456789</div>
-                    <div>Lagerort:
-                        <font color="red">Schrank</font>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
-                        blablabla..... Film aufzeichnet</p>
-                    <div class="row">
-
-                    </div>
-                </div>
-
-                <div class="col-sm-1 spacerleft10">
-                    <div class="row">
-                        <div>Entliehen an:</div>
+                    <div class="col-sm-2">
                         <div>
-                            <h5>Max Mustermann</h5>
+                            <h3>Kamera 1</h3>
+                        </div>
+                        <div>Inv.-Nr.: 123456789</div>
+                        <div>Lagerort:
+                            <font color="red">Schrank</font>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
+                            blablabla..... Film aufzeichnet</p>
+                        <div class="row">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Entliehen an:</div>
+                            <div>
+                                <h5>Max Mustermann</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Rückgabe: </div>
+                            <div>
+                                <h5>
+                                    <font color="red">25.09.2018</font>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <a href="" class="btn btn-admin btn-sm" role="button">
+                                <img class="admin-icon" src="../img/trash-white.svg" alt="">
+                            </a>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <a href="" class="btn btn-admin btn-sm" role="button">
+                                <img class="admin-icon" src="../img/pencil-white.svg" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-1 spacerleft15">
-                    <div class="row">
-                        <div>Rückgabe: </div>
-                        <div>
-                            <h5>
-                                <font color="red">25.09.2018</font>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/trash-white.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/pencil-white.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-
             </div>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-1">
-                    <img class="img-fluid" src="../img/video_camera.png" alt="img">
-                </div>
-                <div class="col-sm-2 spacerleft15">
-                    <div>
-                        <h3>Kamera 1</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img class="img-fluid" src="../img/video_camera.png" alt="img">
                     </div>
-                    <div>Inv.-Nr.: 123456789</div>
-                    <div>Lagerort:
-                        <font color="red">Schrank</font>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
-                        blablabla..... Film aufzeichnet</p>
-                    <div class="row">
-
-                    </div>
-                </div>
-
-                <div class="col-sm-1 spacerleft10">
-                    <div class="row">
-                        <div>Entliehen an:</div>
+                    <div class="col-sm-2">
                         <div>
-                            <h5>Max Mustermann</h5>
+                            <h3>Kamera 1</h3>
+                        </div>
+                        <div>Inv.-Nr.: 123456789</div>
+                        <div>Lagerort:
+                            <font color="red">Schrank</font>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-1 spacerleft15">
-                    <div class="row">
-                        <div>Rückgabe: </div>
-                        <div>
-                            <h5>
-                                <font color="red">25.09.2018</font>
-                            </h5>
+                    <div class="col-sm-4">
+                        <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
+                            blablabla..... Film aufzeichnet</p>
+                        <div class="row">
+
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-2 row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/trash-white.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/pencil-white.svg" alt="">
-                        </button>
-                    </div>
-                </div>
 
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Entliehen an:</div>
+                            <div>
+                                <h5>Max Mustermann</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Rückgabe: </div>
+                            <div>
+                                <h5>
+                                    <font color="red">25.09.2018</font>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/trash-white.svg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/pencil-white.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                </div>
             </div>
+
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-1">
-                    <img class="img-fluid" src="../img/video_camera.png" alt="img">
-                </div>
-                <div class="col-sm-2 spacerleft15">
-                    <div>
-                        <h3>Kamera 1</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img class="img-fluid" src="../img/video_camera.png" alt="img">
                     </div>
-                    <div>Inv.-Nr.: 123456789</div>
-                    <div>Lagerort:
-                        <font color="red">Schrank</font>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
-                        blablabla..... Film aufzeichnet</p>
-                    <div class="row">
-
-                    </div>
-                </div>
-
-                <div class="col-sm-1 spacerleft10">
-                    <div class="row">
-                        <div>Entliehen an:</div>
+                    <div class="col-sm-2">
                         <div>
-                            <h5>Max Mustermann</h5>
+                            <h3>Kamera 1</h3>
+                        </div>
+                        <div>Inv.-Nr.: 123456789</div>
+                        <div>Lagerort:
+                            <font color="red">Schrank</font>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-1 spacerleft15">
-                    <div class="row">
-                        <div>Rückgabe: </div>
-                        <div>
-                            <h5>
-                                <font color="red">25.09.2018</font>
-                            </h5>
+                    <div class="col-sm-4">
+                        <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
+                            blablabla..... Film aufzeichnet</p>
+                        <div class="row">
+
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-2 row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/trash-white.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <button type="button" name="button" class="btn-admin btn-sm">
-                            <img class="admin-icon" src="../img/pencil-white.svg" alt="">
-                        </button>
-                    </div>
-                </div>
 
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Entliehen an:</div>
+                            <div>
+                                <h5>Max Mustermann</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Rückgabe: </div>
+                            <div>
+                                <h5>
+                                    <font color="red">25.09.2018</font>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/trash-white.svg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/pencil-white.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                </div>
             </div>
+
         </div>
 
-    </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img class="img-fluid" src="../img/video_camera.png" alt="img">
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <h3>Kamera 1</h3>
+                        </div>
+                        <div>Inv.-Nr.: 123456789</div>
+                        <div>Lagerort:
+                            <font color="red">Schrank</font>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen
+                            blablabla..... Film aufzeichnet</p>
+                        <div class="row">
 
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Entliehen an:</div>
+                            <div>
+                                <h5>Max Mustermann</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div>Rückgabe: </div>
+                            <div>
+                                <h5>
+                                    <font color="red">25.09.2018</font>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/trash-white.svg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="" class="btn btn-admin btn-sm" role="button">
+                                    <img class="admin-icon" src="../img/pencil-white.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <footer>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
