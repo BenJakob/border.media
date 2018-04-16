@@ -6,25 +6,13 @@ p {
     font-size: 0.8em;
 }
 
-.user-icon {
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
 .equipment-row {
     margin-top: 2em;
-    margin-left: 1em;
-    margin-right: 1em;
 }
 
 .search-equipment {
     padding-top: 33px;
     margin-bottom: 16px;
-}
-
-.equipment-img {
-    height: 140px;
-    width: 140px;
 }
 
 .btn-primary {
@@ -42,4 +30,22 @@ p {
 .add-img {
     height: 240px;
     width: 240px;
+}
+
+.delete-btn {
+    height: 35px;
+    width: 50px;
+    background-color: var(--dark-grey);
+    border-radius: 2em;
+}
+
+.continue-renting-btn {
+    color: white;
+    background-color: var(--light-red);
+    border-radius: var(--rounded-corner);
+}
+
+#btn-rent {
+    width: var(--standard-width);
+    margin-right: 2em;
 }

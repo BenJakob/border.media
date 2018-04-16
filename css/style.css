@@ -49,6 +49,11 @@ input {
     width: var(--standard-width);
 }
 
+.user-icon {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
 .btn-primary:hover, .btn-primary:active {
     background-color: var(--light-red) !important;
 }
@@ -65,10 +70,19 @@ input {
     margin-left: 15px;
 }
 
+.spacer-top-2em {
+    margin-top: 2em;
+}
+
 .btn-admin {
-    background-color: #444444;
+    background-color: var(--dark-grey);
     border-radius: var(--rounded-corner);
 }
+
 .left-item{
     margin-left: 2em;
+}
+
+.red-text {
+    color: var(--light-red);
 }
