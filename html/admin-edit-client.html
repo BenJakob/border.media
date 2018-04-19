@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../css/equipment.css" />
-    <link rel="stylesheet" type="text/css" href="../css/admin-edit-client.css" />
+    <link rel="stylesheet" type="text/css" href="../css/profil.css" />
 </head>
 
 <body>
@@ -41,59 +40,49 @@
             </div>
     </nav>
     <div class="container-fluid">
-        <div class="col-sm-6">
-            <h3 class="mb-2">Profil bearbeiten</h3>
-            <div>Kunden ID:
-                <font color="red">xx-xxx</font> | Status:
-                <font color="red">xxxxx</font>
+        <div class="row spacer-top-2em">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-0">Profil bearbeiten</h2>
+                        <p>Kunden ID: <span class="red-text">xx-xxx</span>| Status:<span color="red-text">xxxxx</span></p>
+                    </div>
+                    <div class="card-body">
+                        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                            <div class="form-group">
+                                <label for="username">Benutzername</label>
+                                <input type="text" class="form-control form-control-md" name="username" id="username" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">E-Mail-Adresse</label>
+                                <input type="text" class="form-control form-control-md" name="username" id="username" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Passwort</label>
+                                <input type="text" class="form-control form-control-md" name="username" id="username" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Passwort wiederholen</label>
+                                <input type="text" class="form-control form-control-md" name="username" id="username" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Neues Passwort wiederholen</label>
+                                <input type="password" class="form-control form-control-md" name="password" id="password" required="" autocomplete="new-password">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary" id="btn-save-changes">Speichern</button>
+                                <button type="submit" class="btn btn-primary" id="btn-delete-account">Konto sperren</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6 " style="height:50px;">
-
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
-                        <div class="form-group col-sm-12">
-                            <label for="bezeichnung">Benutzername:</label>
-                            <input type="text" class="form-control form-control-lg" name="username" id="username" required="">
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <label for="bezeichnung">Emailadresse</label>
-                            <input type="text" class="form-control form-control-lg" name="email" id="email" required="">
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <label for="bezeichnung">Passwort:</label>
-                            <input type="text" class="form-control form-control-lg" name="passwort" id="passwort" required="">
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <label for="bezeichnung">Passwort wiederholen:</label>
-                            <input type="text" class="form-control form-control-lg" name="passwortre" id="passwortre" required="">
-                        </div>
-                    </form>
+            <div class="col-md-6">
+                <div class="row">
+                    <img class="img-fluid mx-auto" src="../img/user.svg" alt="user-img">
                 </div>
-
-                <div class="row col-sm-8">
-                    <div class="col-sm-6">
-                        <button type="button" name="savebutton" class="btn-primary">Speichern</button>
-                    </div>
-                    <div class="col-sm-6">
-                        <button type="button" name="kontoSperren" class="btn-secondary">Konto sperren</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm-2">
-                <div>
-                    <img class="edit-img" src="../img/user.svg" alt="img">
-                </div>
-                <div class="col-sm-12 row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                        <button type="button" name="button" class="btn-primary btn-block">Bild hochladen</button>
-                    </div>
-                    <div class="col-sm-4"></div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary mx-auto" id="btn-change-pic">Bild ändern</button>
                 </div>
             </div>
         </div>

@@ -86,3 +86,10 @@ input {
 .red-text {
     color: var(--light-red);
 }
+
+.column-btn {
+    height: 35px;
+    width: 50px;
+    background-color: var(--dark-grey);
+    border-radius: 2em;
+}

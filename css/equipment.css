@@ -32,13 +32,6 @@ p {
     width: 240px;
 }
 
-.delete-btn {
-    height: 35px;
-    width: 50px;
-    background-color: var(--dark-grey);
-    border-radius: 2em;
-}
-
 .continue-renting-btn {
     color: white;
     background-color: var(--light-red);
