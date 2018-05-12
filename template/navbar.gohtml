@@ -1,0 +1,21 @@
+{{ define "navbar" }}
+<nav class="navbar navbar-expand-sm navbar-light">
+    <a class="navbar-brand" href="/">borgdir.media</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" role="navigation">
+        <div class="navbar-nav mr-auto">
+            {{range .NavItems}}
+                <a class="nav-item nav-link" href="{{.Link}}">{{.Title}}</a>
+            {{end}}
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="profil.html">{{.Username}}</a>
+            <a class="nav-item nav-link" href="profil.html">{{.UserImage}}</a>
+        </div>
+    </div>
+</nav>
+{{ end }}
