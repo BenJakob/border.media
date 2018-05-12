@@ -1,10 +1,7 @@
 package main
 
-import (
-	"net/http"
-
-	"borgdir.media/app/controller"
-)
+import "net/http"
+import "borgdir.media/app/controller"
 
 func main() {
 
