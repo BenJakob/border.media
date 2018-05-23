@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/admin", routes.Admin)
 	http.HandleFunc("/admin/add", routes.AdminAdd)
 	http.HandleFunc("/admin/clients", routes.AdminsClients)
-	http.HandleFunc("/admin/edit-client", routes.AdminEditClients)
+	http.HandleFunc("/admin/edit-client", routes.AdminEditClient)
 	http.HandleFunc("/admin/equipment", routes.AdminEquipment)
 	http.HandleFunc("/cart", routes.Cart)
 	http.HandleFunc("/equipment", routes.Equipment)
