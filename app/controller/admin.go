@@ -2,19 +2,38 @@ package routes
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	"borgdir.media/app/model"
 )
 
+type AdminData struct {
+	HeaderData model.Header
+	User       model.User
+	IsLoggedIn bool
+	FooterData []string
+}
+
 func Admin(w http.ResponseWriter, r *http.Request) {
+	t, err := template.New("admin").ParseFiles("template/admin.gohtml", "template/header.gohtml", "template/navbar.gohtml", "template/footer.gohtml")
 
-	// t := template.Must(template.ParseFiles("template/admin.html"))
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-	t := template.Must(template.ParseFiles("template/layout.gohtml"))
-	headerData := model.Header{Title: "Admin", Css: []string{}}
-	navbarItems := model.NavItem{Title: "Equipment", Link: "admin-equipment.html"}
+	headerData := model.Header{Title: "Verwaltung", Css: []string{"/css/style.css"}}
+	user := model.GetAdmin()
+	footerData := []string{}
 
-	t.Execute(w, headerData)
+	adminData := AdminData{
+		HeaderData: headerData,
+		User:       user,
+		IsLoggedIn: true,
+		FooterData: footerData,
+	}
 
+	if err := t.Execute(w, adminData); err != nil {
+		log.Fatalln(err)
+	}
 }
