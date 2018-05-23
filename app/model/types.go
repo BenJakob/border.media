@@ -2,10 +2,14 @@ package model
 
 type User struct {
 	ID       uint32
+	Name     string
+	LastName string
 	UserName string
 	Email    string
 	Password string
 	Image    string
+	Status   string
+	Admin    bool
 }
 
 type Item struct {
@@ -19,14 +23,4 @@ type Item struct {
 type Header struct {
 	Title string
 	Css   []string
-}
-
-type Navbar struct {
-	Items      []NavItem
-	IsLoggedIn bool
-}
-
-type NavItem struct {
-	Title string
-	Link  string
 }

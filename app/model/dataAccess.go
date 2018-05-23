@@ -3,26 +3,6 @@ package model
 // Dummy Data
 // Will be replaced with Database Access soon
 
-func GetMinNavbar() Navbar {
-	n1 := NavItem{Title: "Equipment", Link: "/equipment"}
-	n2 := NavItem{Title: "Login", Link: "/login"}
-	return Navbar{Items: []NavItem{n1, n2}, IsLoggedIn: false}
-}
-
-func GetNavbarUser() Navbar {
-	n1 := NavItem{Title: "Equipment", Link: "/equipment"}
-	n2 := NavItem{Title: "Meine Geräte", Link: "/my-equipment"}
-	n3 := NavItem{Title: "Logout", Link: "/login"}
-	return Navbar{Items: []NavItem{n1, n2, n3}, IsLoggedIn: true}
-}
-
-func GetNavbarAdmin() Navbar {
-	n1 := NavItem{Title: "Equipment", Link: "/equipment"}
-	n2 := NavItem{Title: "Meine Geräte", Link: "/my-equipment"}
-	n3 := NavItem{Title: "Logout", Link: "/login"}
-	return Navbar{Items: []NavItem{n1, n2, n3}, IsLoggedIn: true}
-}
-
 func GetCarouselImages() (string, []string) {
 	return "/img/video_camera.png", []string{"/img/speaker.jpg", "/img/microphone.jpg", "/img/light.jpg", "/img/turntable.jpg", "/img/headset.jpg"}
 }
@@ -51,4 +31,48 @@ func GetEquipment() []Item {
 
 func GetEquipmentStatus(id int) string {
 	return "entliehen"
+}
+
+func GetUsers() []User {
+	var users []User
+	for i := 1; i < 9; i++ {
+		users = append(users, User{
+			ID:       uint32(i),
+			Name:     "Max",
+			LastName: "Mustermann",
+			UserName: "Max123",
+			Email:    "max123@email.com",
+			Password: "12345",
+			Image:    "/img/user.svg",
+		})
+	}
+	return users
+}
+
+func GetUser() User {
+	return User{
+		ID:       1,
+		Name:     "Max",
+		LastName: "Mustermann",
+		UserName: "Max123",
+		Email:    "max123@email.com",
+		Password: "12345",
+		Image:    "/img/user.svg",
+		Status:   "xxxxxxx",
+		Admin:    false,
+	}
+}
+
+func GetAdmin() User {
+	return User{
+		ID:       1,
+		Name:     "Max",
+		LastName: "Mustermann",
+		UserName: "Max123",
+		Email:    "max123@email.com",
+		Password: "12345",
+		Image:    "/img/user.svg",
+		Status:   "xxxxxxx",
+		Admin:    true,
+	}
 }
