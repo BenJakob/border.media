@@ -1,0 +1,53 @@
+{{define "profil"}}
+{{template "header" .HeaderData}}
+{{template "navbar" .}}
+<div class="container-fluid">
+    <div class="row spacer-top-2em">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Profil bearbeiten</h2>
+                    <p>Status: <span class="red-text">xxxxxx</span></p>
+                </div>
+                <div class="card-body">
+                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                        <div class="form-group">
+                            <label for="username">Benutzername</label>
+                            <input type="text" class="form-control form-control-md" name="username" id="username" required="" value="{{.User.UserName}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">E-mail-Adresse</label>
+                            <input type="text" class="form-control form-control-md" name="email" id="email" required="" value="{{.User.Email}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Altes Passwort</label>
+                            <input type="password" class="form-control form-control-md" name="old-password" id="old-password" required="" value="{{.User.Password}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Neues Passwort</label>
+                            <input type="text" class="form-control form-control-md" name="new-password" id="new-password" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Neues Passwort wiederholen</label>
+                            <input type="password" class="form-control form-control-md" name="new-repeat-password" id="new-repeat-password" required="">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" id="btn-save-changes">Änderungen speichern</button>
+                            <button type="submit" class="btn btn-primary" id="btn-delete-account">Konto löschen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <img class="img-fluid mx-auto" src="{{.User.Image}}" alt="user-img">
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary mx-auto" id="btn-change-pic">Bild ändern</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer"}}
+{{end}}

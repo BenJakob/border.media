@@ -1,0 +1,35 @@
+{{define "admin"}}
+{{template "header" .HeaderData}}
+{{template "navbar" .}}
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-sm-6 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3 class="mb-0">Administrationbereich</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                                <img class="" src="/img/clipboard.svg" alt="icon-user" style="width:100%">
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                                <img class="" src="/img/user_group.svg" alt="icon-user" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                                <a href="/admin/equipment" class="btn btn-primary" role="button">Equipment verwalten</a>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                                <a href="/admin/clients" class="btn btn-primary" role="button">Kunden verwalten</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{{template "footer"}}
+{{end}}

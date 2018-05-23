@@ -1,0 +1,63 @@
+{{define "admin-clients"}}
+{{template "header" .HeaderData}}
+{{template "navbar" .}}
+<div class="container-fluid">
+    <div class="row spacer-top-2em">
+        <h3 class="col-md-6">Kunden</h3>
+    </div>
+    <div class="row spacer-top-2em">
+        <div class="col-md-3">
+            <form class="form row" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                <div class="form-group col-md-8">
+                    <label for="bezeichnung">Username:</label>
+                    <input type="text" class="form-control form-control-lg" name="bezeichnung" id="bezeichnung" required="">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="select-category">Kategorie</label>
+                    <select class="form-control" id="select-category">
+                        <option value="k1">Admins</option>
+                        <option value="k2">Kunden</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Kunde</div>
+        <div class="col-md-4">Ausgeliehenes Equipment</div>
+        <div class="col-md-4">Status</div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <hr size="30">
+        </div>
+    </div>
+    {{range .Users}}
+        <div class="row">
+            <div class="col-md-1">
+                <img class="img-fluid" src="{{.Image}}" alt="img">
+            </div>
+            <div class="col-md-2">
+                <div>{{.Name}} {{.LastName}}</div>
+                <div>ID: {{.ID}}</div>
+                <div class="red-text">Benutzer</div>
+            </div>
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
+            </div>
+            <div class="col-md-1">
+                <div class="row">
+                    <div>Konto aktiv bis: </div>
+                    <div class="red-text">01.01.2018</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a href="/admin/edit-client" class="btn btn-admin btn-md" role="button">
+                    <img class="admin-icon" src="/img/pencil-white.svg" alt="Edit Image">
+                </a>
+            </div>
+        </div>
+    {{end}}
+</div>
+{{template "footer"}}
+{{end}}
