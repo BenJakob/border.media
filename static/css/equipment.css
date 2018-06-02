@@ -6,36 +6,16 @@ p {
     font-size: 0.8em;
 }
 
-.equipment-row {
-    margin-top: 2em;
-}
-
-.search-equipment {
+.action-spacer {
     padding-top: 33px;
-    margin-bottom: 16px;
 }
 
-.btn-primary {
-    height: auto;
-    width: auto;
-    margin: 0;
-    padding: 0.3em;
-}
-
-.admin-icon {
-    height: 20px;
-    width: 30px;
-}
-
-.add-img {
-    height: 240px;
-    width: 240px;
-}
-
-.continue-renting-btn {
-    color: white;
-    background-color: var(--light-red);
-    border-radius: var(--rounded-corner);
+.btn-add-Equipment {
+    margin: 0px;
+    height:  var(--standard-height);
+    width: 100%;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
 }
 
 #btn-rent {

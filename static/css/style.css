@@ -1,7 +1,8 @@
 :root {
     --light-red: #FC654E;
+    --light-red-hover: #FF7F7F;
     --dark-grey: #444444;
-    --rounded-corner: 0.5em;
+    --dark-grey-hover: #8C8C8C;
     --standard-height: 2.3em;
     --standard-width: 12em;
 }
@@ -16,9 +17,23 @@ h2 {
     font-size: 2em;
 }
 
-input {
-    height: var(--standard-height);
-    border-radius: var(--rounded-corner);
+a {
+    color: var(--dark-grey);
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--light-red);
+    text-decoration: none;
+}
+
+.display-none {
+    display: none;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: 3px solid var(--light-red);
 }
 
 .navbar-brand, .navbar-brand:hover, .navbar-brand:visited {
@@ -27,22 +42,19 @@ input {
 }
 
 .navbar a {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     color: var(--dark-grey) !important;
 }
 
 .navbar img {
-    height: 20px;
-    width: 20px;
-}
-
-.right-item {
-    margin-right: 3em;
+    height: 25px;
+    width: 25px;
 }
 
 .btn-primary {
     background-color: var(--light-red);
-    border: 1px solid black;
-    border-radius: var(--rounded-corner);
+    border: none;
     color: white;
     height: var(--standard-height);
     margin: 1em;
@@ -54,33 +66,17 @@ input {
     border-radius: 50%;
 }
 
-.btn-primary:hover, .btn-primary:active {
-    background-color: var(--light-red) !important;
-}
-
-.spacerleft5 {
-    margin-left: 5px;
-}
-
-.spacerleft10 {
-    margin-left: 10px;
-}
-
-.spacerleft15 {
-    margin-left: 15px;
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus {
+    background-color: var(--light-red-hover) !important;
+    border: transparent;
 }
 
 .spacer-top-2em {
     margin-top: 2em;
 }
 
-.btn-admin {
-    background-color: var(--dark-grey);
-    border-radius: var(--rounded-corner);
-}
-
-.left-item{
-    margin-left: 2em;
+.spacer-top-6em {
+    margin-top: 6em;
 }
 
 .red-text {
@@ -88,8 +84,46 @@ input {
 }
 
 .column-btn {
-    height: 35px;
-    width: 50px;
+    display: inline-block;
+    height: 2.2em;
+    width: 3.2em;
     background-color: var(--dark-grey);
-    border-radius: 2em;
+    border-radius: 1.5em;
+}
+
+.column-btn img {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.column-btn:hover {
+    background-color: var(--dark-grey-hover);
+}
+
+.btn-cart {
+    color: white;
+    display: inline-block;
+    position: relative;
+}
+
+.button__badge {
+    background-color: var(--light-red);
+    border-radius: 2px;
+    color: white;
+
+    padding: 1px 3px;
+    font-size: 10px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#btn-delete {
+    background-color: var(--dark-grey) !important;
+}
+
+#btn-delete:hover {
+    background-color: var(--dark-grey-hover) !important;
 }
