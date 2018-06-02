@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-md-3 action-spacer">
-            <input type="text" class="form-control" id="search-equipment" placeholder="Suche">
+            <input type="text" class="form-control" id="search-box" placeholder="Suche">
         </div>
         <div class="col-md-3">
             <div class="form-group">
@@ -37,45 +37,39 @@
             <hr size="30">
         </div>
     </div>
-    {{range .Rows}}
     <div class="row spacer-top-2em">
-        {{range .Items}}
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-8">
-                    <h3>{{.Name}}</h3>
-                    <p>{{.Description}}</p>
-                    <div class="row">
-                        {{if .Available}}
-                            <div class="col-md-8 my-auto">
-                                <button onclick="add(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="add-{{.ID}}">Hinzufügen</button>
-                            </div>
-                            <div class="col-md-4 my-auto">
-                                <label class="mx-auto red-text">Verfügbar</label>
-                            </div>
-                        {{else}}
-                            <div class="col-md-8 my-auto">
-                                <button onclick="mark(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="mark-{{.ID}}">Vormerken</button>
-                            </div>
-                            <div class="col-md-4 my-auto">
-                                <label class="mx-auto red-text">Entliehen</label>
-                            </div>
-                        {{end}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img class="img-fluid" src="{{.Image}}" alt="Item Image">
+    {{range .Items}}
+    <div class="col-md-6 search-row" name="{{.Name}}">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>{{.Name}}</h3>
+                <p id="description-field">{{.Description}}</p>
+                <div class="row">
+                    {{if .Available}}
+                        <div class="col-md-6 my-auto">
+                            <button onclick="add(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="add-{{.ID}}">Hinzufügen</button>
+                        </div>
+                        <div class="col-md-6 text-center my-auto">
+                            <label class="mx-auto red-text">Verfügbar</label>
+                        </div>
+                    {{else}}
+                        <div class="col-md-6 my-auto">
+                            <button onclick="mark(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="mark-{{.ID}}">Vormerken</button>
+                        </div>
+                        <div class="col-md-6 text-center my-auto">
+                            <label class="red-text">Entliehen</label>
+                        </div>
+                    {{end}}
                 </div>
             </div>
+            <div class="col-md-4">
+                <img class="img-fluid item-img" src="{{.Image}}" alt="Item Image">
+            </div>
         </div>
-        {{end}}
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <hr size="30">
-        </div>
+        <div class="row"><div class="col"><hr size="30"></div></div>
     </div>
     {{end}}
+    </div>
 </div>
 {{template "footer" .FooterData}}
 {{end}}

@@ -67,7 +67,7 @@ type EquipmentData struct {
 	IsLoggedIn    bool
 	Categories    []string
 	SortOptions   []string
-	Rows          []Row
+	Items         []Item
 	CartItemCount int
 	FooterData    []string
 }

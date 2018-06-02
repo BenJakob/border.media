@@ -14,3 +14,8 @@ function mark(itemId, buttonId) {
     $.get('/equipment/mark', { id: itemId });
     $("#" + buttonId).blur()
 }
+
+function orderBy() {
+    var value = $("select-sortorder").val()
+    window.location.href = "/admin/equipment?order=" + value;
+}

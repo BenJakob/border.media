@@ -18,6 +18,11 @@ p {
     border: 1px solid transparent;
 }
 
+#description-field {
+    height: 190px;
+    overflow: hidden;
+}
+
 #btn-rent {
     width: var(--standard-width);
     margin-right: 2em;

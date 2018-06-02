@@ -21,7 +21,7 @@ func Equipment(w http.ResponseWriter, r *http.Request) {
 	isLoggedIn := err == nil
 	headerData := model.Header{Title: "Meine Geräte", Css: []string{"/css/style.css", "/css/equipment.css"}}
 	categories := model.GetCategories()
-	rows := createRows(model.GetItems())
+	items := model.GetItems()
 	cartItemCount := model.GetCartItemCount(user)
 	footerData := []string{"/scripts/equipment.js", "/scripts/search.js"}
 	equipmentData := model.EquipmentData{
@@ -29,7 +29,7 @@ func Equipment(w http.ResponseWriter, r *http.Request) {
 		User:          user,
 		IsLoggedIn:    isLoggedIn,
 		Categories:    categories,
-		Rows:          rows,
+		Items:         items,
 		CartItemCount: cartItemCount,
 		FooterData:    footerData,
 	}
@@ -54,21 +54,6 @@ func EquipmentMark(w http.ResponseWriter, r *http.Request) {
 		model.CreateEntry(user, item, date, 2, 1)
 	}
 	http.Redirect(w, r, "/equipment", http.StatusSeeOther)
-}
-
-func createRows(items []model.Item) []model.Row {
-	var rows []model.Row
-	var row model.Row
-	for index, item := range items {
-		if index%2 == 0 {
-			row = model.Row{}
-		}
-		row.Items = append(row.Items, item)
-		if index%2 == 1 || index+1 == len(items) {
-			rows = append(rows, row)
-		}
-	}
-	return rows
 }
 
 func getDataForEquipmentAction(w http.ResponseWriter, r *http.Request) (model.User, model.Item, error) {
