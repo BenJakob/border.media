@@ -1,78 +1,35 @@
 package model
 
-// Dummy Data
-// Will be replaced with Database Access soon
+import (
+	"database/sql"
 
-func GetCarouselImages() (string, []string) {
-	return "/img/video_camera.png", []string{"/img/speaker.jpg", "/img/microphone.jpg", "/img/light.jpg", "/img/turntable.jpg", "/img/headset.jpg"}
+	_ "github.com/mattn/go-sqlite3"
+	"golang.org/x/crypto/bcrypt"
+)
+
+var db *sql.DB
+var err error
+var dbDateLayout = "20060102"
+var localDateLayout = "02.01.2006"
+var localDateLayoutInputField = "2006-01-02"
+
+func init() {
+	db, err = sql.Open("sqlite3", "app/model/Web.db")
+	checkErr(err)
 }
 
-func GetCategories() []string {
-	return []string{"Alle", "Kameras", "Beleuchtung", "Monitore", "Sonstiges"}
-}
-
-func GetSortOptions() []string {
-	return []string{"", "Preis", "Verfügbarkeit", "Kategorie"}
-}
-
-func GetEquipment() []Item {
-	var items []Item
-	for i := 1; i < 9; i++ {
-		items = append(items, Item{
-			ID:          uint32(i),
-			Name:        "Kamera",
-			Description: "Eine Kamera ist eine fototechnische Apparatur, die statische oder bewegte Bilder auf einem fotografischen Film oder elektronisch auf ein magnetisches Videoband oder digitales Speichermedium aufzeichnen oder über eine Schnittstelle übermitteln kann.",
-			Status:      GetEquipmentStatus(i),
-			Image:       "/img/video_camera.png",
-		})
-	}
-	return items
-}
-
-func GetEquipmentStatus(id int) string {
-	return "entliehen"
-}
-
-func GetUsers() []User {
-	var users []User
-	for i := 1; i < 9; i++ {
-		users = append(users, User{
-			ID:       uint32(i),
-			Name:     "Max",
-			LastName: "Mustermann",
-			UserName: "Max123",
-			Email:    "max123@email.com",
-			Password: "12345",
-			Image:    "/img/user.svg",
-		})
-	}
-	return users
-}
-
-func GetUser() User {
-	return User{
-		ID:       1,
-		Name:     "Max",
-		LastName: "Mustermann",
-		UserName: "Max123",
-		Email:    "max123@email.com",
-		Password: "12345",
-		Image:    "/img/user.svg",
-		Status:   "xxxxxxx",
-		Admin:    false,
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
 	}
 }
 
-func GetAdmin() User {
-	return User{
-		ID:       1,
-		Name:     "Max",
-		LastName: "Mustermann",
-		UserName: "Max123",
-		Email:    "max123@email.com",
-		Password: "12345",
-		Image:    "/img/user.svg",
-		Status:   "xxxxxxx",
-		Admin:    true,
-	}
+func HashPassword(password string) (string, error) {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	return string(bytes), err
+}
+
+func CheckPasswordHash(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
 }
