@@ -10,30 +10,41 @@ import (
 )
 
 func main() {
-
-	http.HandleFunc("/", routes.Index)
-	http.HandleFunc("/admin", routes.Admin)
-	http.HandleFunc("/admin/add", routes.AdminAdd)
-	http.HandleFunc("/admin/clients", routes.AdminsClients)
-	http.HandleFunc("/admin/edit-client", routes.AdminEditClient)
-	http.HandleFunc("/admin/equipment", routes.AdminEquipment)
-	http.HandleFunc("/cart", routes.Cart)
-	http.HandleFunc("/equipment", routes.Equipment)
-	http.HandleFunc("/login", routes.Login)
-	http.HandleFunc("/my-equipment", routes.MyEquipment)
-	http.HandleFunc("/profil", routes.Profil)
-	http.HandleFunc("/register", routes.Register)
+	http.HandleFunc("/", controller.Index)
+	http.HandleFunc("/admin", controller.Admin)
+	http.HandleFunc("/admin/add", controller.AdminAdd)
+	http.HandleFunc("/admin/clients", controller.AdminsClients)
+	http.HandleFunc("/admin/edit-client", controller.AdminEditClient)
+	http.HandleFunc("/admin/edit-client/lock", controller.AdminEditClientLock)
+	http.HandleFunc("/admin/equipment", controller.AdminEquipment)
+	http.HandleFunc("/admin/equipment/edit", controller.AdminEquipmentEdit)
+	http.HandleFunc("/admin/equipment/delete", controller.AdminEquipmentDelete)
+	http.HandleFunc("/cart", controller.Cart)
+	http.HandleFunc("/cart/remove", controller.CartRemove)
+	http.HandleFunc("/cart/updatedate", controller.CartUpdateDate)
+	http.HandleFunc("/cart/updatequantity", controller.CartUpdateQuantity)
+	http.HandleFunc("/cart/checkout", controller.CartCheckout)
+	http.HandleFunc("/equipment", controller.Equipment)
+	http.HandleFunc("/equipment/add", controller.EquipmentAdd)
+	http.HandleFunc("/equipment/mark", controller.EquipmentMark)
+	http.HandleFunc("/login", controller.Login)
+	http.HandleFunc("/logout", controller.Logout)
+	http.HandleFunc("/my-equipment", controller.MyEquipment)
+	http.HandleFunc("/my-equipment/remove", controller.MyEquipmentRemove)
+	http.HandleFunc("/my-equipment/extend", controller.MyEquipmentExtend)
+	http.HandleFunc("/profil", controller.Profil)
+	http.HandleFunc("/profil/delete", controller.ProfilDelete)
+	http.HandleFunc("/register", controller.Register)
 
 	http.HandleFunc("/img/", serveResource)
 	http.HandleFunc("/css/", serveResource)
 	http.HandleFunc("/scripts/", serveResource)
 
 	http.ListenAndServe(":8080", nil)
-
 }
 
-func serveResource(w http.ResponseWriter, req *http.Request) {
-	path := "static" + req.URL.Path
+func serveResource(w http.ResponseWriter, r *http.Request) {
+	path := "static" + r.URL.Path
 	var contentType string
 
 	if strings.HasSuffix(path, ".css") {
