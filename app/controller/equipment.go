@@ -1,26 +1,14 @@
-package routes
+package controller
 
 import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
+	"time"
 
 	"borgdir.media/app/model"
 )
-
-type EquipmentData struct {
-	HeaderData  model.Header
-	User        model.User
-	IsLoggedIn  bool
-	Categories  []string
-	SortOptions []string
-	Rows        []Row
-	FooterData  []string
-}
-
-type Row struct {
-	Items []model.Item
-}
 
 func Equipment(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("equipment").ParseFiles("template/equipment.gohtml", "template/header.gohtml", "template/navbar.gohtml", "template/footer.gohtml")
@@ -29,21 +17,21 @@ func Equipment(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 
-	headerData := model.Header{Title: "Meine Geräte", Css: []string{"/css/equipment.css", "/css/style.css"}}
-	user := model.GetUser()
+	user, err := model.GetLoggedInUser(w, r)
+	isLoggedIn := err == nil
+	headerData := model.Header{Title: "Meine Geräte", Css: []string{"/css/style.css", "/css/equipment.css"}}
 	categories := model.GetCategories()
-	sortOptions := model.GetSortOptions()
-	rows := createRows(model.GetEquipment())
-	footerData := []string{}
-
-	equipmentData := EquipmentData{
-		HeaderData:  headerData,
-		User:        user,
-		IsLoggedIn:  true,
-		Categories:  categories,
-		SortOptions: sortOptions,
-		Rows:        rows,
-		FooterData:  footerData,
+	rows := createRows(model.GetItems())
+	cartItemCount := model.GetCartItemCount(user)
+	footerData := []string{"/scripts/equipment.js", "/scripts/search.js"}
+	equipmentData := model.EquipmentData{
+		HeaderData:    headerData,
+		User:          user,
+		IsLoggedIn:    isLoggedIn,
+		Categories:    categories,
+		Rows:          rows,
+		CartItemCount: cartItemCount,
+		FooterData:    footerData,
 	}
 
 	if err := t.Execute(w, equipmentData); err != nil {
@@ -51,12 +39,29 @@ func Equipment(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func createRows(items []model.Item) []Row {
-	var rows []Row
-	var row Row
+func EquipmentAdd(w http.ResponseWriter, r *http.Request) {
+	user, item, err := getDataForEquipmentAction(w, r)
+	if err == nil {
+		model.CreateCartItem(user, item)
+	}
+	http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+}
+
+func EquipmentMark(w http.ResponseWriter, r *http.Request) {
+	user, item, err := getDataForEquipmentAction(w, r)
+	if err == nil {
+		date := time.Now().Format("20060102")
+		model.CreateEntry(user, item, date, 2, 1)
+	}
+	http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+}
+
+func createRows(items []model.Item) []model.Row {
+	var rows []model.Row
+	var row model.Row
 	for index, item := range items {
 		if index%2 == 0 {
-			row = Row{}
+			row = model.Row{}
 		}
 		row.Items = append(row.Items, item)
 		if index%2 == 1 || index+1 == len(items) {
@@ -64,4 +69,29 @@ func createRows(items []model.Item) []Row {
 		}
 	}
 	return rows
+}
+
+func getDataForEquipmentAction(w http.ResponseWriter, r *http.Request) (model.User, model.Item, error) {
+	user, err := model.GetLoggedInUser(w, r)
+
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return model.User{}, model.Item{}, err
+	}
+
+	id, err := strconv.Atoi(r.FormValue("id"))
+
+	if err != nil {
+		http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+		return user, model.Item{}, err
+	}
+
+	item, err := model.GetItem(id)
+
+	if err != nil {
+		http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+		return user, item, err
+	}
+
+	return user, item, err
 }

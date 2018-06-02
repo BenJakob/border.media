@@ -1,4 +1,4 @@
-package routes
+package controller
 
 import (
 	"html/template"
@@ -8,30 +8,35 @@ import (
 	"borgdir.media/app/model"
 )
 
-type AdminClientsData struct {
-	HeaderData model.Header
-	User       model.User
-	IsLoggedIn bool
-	Users      []model.User
-	FooterData []string
-}
-
 func AdminsClients(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("admin-clients").ParseFiles("template/admin-clients.gohtml", "template/header.gohtml", "template/navbar.gohtml", "template/footer.gohtml")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	headerData := model.Header{Title: "Kunden verwalten", Css: []string{"/css/equipment.css", "/css/style.css"}}
-	user := model.GetAdmin()
-	users := model.GetUsers()
-	footerData := []string{}
+	user, err := model.GetLoggedInUser(w, r)
 
-	adminClientsData := AdminClientsData{
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
+	if user.Status != "Admin" {
+		http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+		return
+	}
+
+	headerData := model.Header{Title: "Kunden verwalten", Css: []string{"/css/equipment.css", "/css/style.css"}}
+	users := model.GetUsers()
+	userStatus := model.GetStatus()
+	footerData := []string{"/scripts/search.js"}
+
+	adminClientsData := model.AdminClientsData{
 		HeaderData: headerData,
 		User:       user,
 		IsLoggedIn: true,
 		Users:      users,
+		UserStatus: userStatus,
 		FooterData: footerData,
 	}
 

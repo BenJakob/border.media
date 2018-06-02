@@ -1,4 +1,4 @@
-package routes
+package controller
 
 import (
 	"html/template"
@@ -8,13 +8,6 @@ import (
 	"borgdir.media/app/model"
 )
 
-type AdminData struct {
-	HeaderData model.Header
-	User       model.User
-	IsLoggedIn bool
-	FooterData []string
-}
-
 func Admin(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("admin").ParseFiles("template/admin.gohtml", "template/header.gohtml", "template/navbar.gohtml", "template/footer.gohtml")
 
@@ -22,11 +15,21 @@ func Admin(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 
-	headerData := model.Header{Title: "Verwaltung", Css: []string{"/css/style.css"}}
-	user := model.GetAdmin()
-	footerData := []string{}
+	user, err := model.GetLoggedInUser(w, r)
 
-	adminData := AdminData{
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
+	if user.Status != "Admin" {
+		http.Redirect(w, r, "/equipment", http.StatusSeeOther)
+		return
+	}
+
+	headerData := model.Header{Title: "Verwaltung", Css: []string{"/css/style.css"}}
+	footerData := []string{}
+	adminData := model.AdminData{
 		HeaderData: headerData,
 		User:       user,
 		IsLoggedIn: true,
