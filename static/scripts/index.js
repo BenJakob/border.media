@@ -1,11 +1,3 @@
-$("#login-btn").click(function() {
-    window.location.href = '/login';
-})
-
-$("#register-btn").click(function() {
-    window.location.href = '/register';
-})
-
 $('#recipeCarousel').carousel({
   interval: 10000
 })
