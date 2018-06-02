@@ -9,18 +9,21 @@
                     <h3 class="mb-0">Noch kein Kunde bei uns?</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    {{if .LoginError}}
+                        <div class="form-group"><label class="red-text">Fehler bei der Anmeldung</label></div>
+                    {{end}}
+                    <form class="form" role="form" onsubmit="return validateForm()" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="username">Benutzername</label>
-                                    <input type="text" class="form-control form-control-lg" name="username" id="username" required>
+                                    <input type="text" class="form-control form-control-lg" name="username" id="username" required/>
                                 </div>
                             </div>
                                 <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">E-Mail</label>
-                                    <input type="text" class="form-control form-control-lg" name="email" id="email" required>
+                                    <input type="email" class="form-control form-control-lg" name="email" id="email" required/>
                                 </div>
                             </div>
                         </div>
@@ -28,13 +31,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password">Passwort</label>
-                                    <input type="password" class="form-control form-control-lg" name="password" id="password" required autocomplete="new-password">
+                                    <input type="password" class="form-control form-control-lg" name="password" id="password" required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="repeat-password">Benutzername</label>
-                                    <input type="text" class="form-control form-control-lg" name="repeat-password" id="repeat-password" required>
+                                    <label for="confirm-password">Passwort wiederholen</label>
+                                    <input type="password" class="form-control form-control-lg" name="confirm-password" id="confirm-password" required/>
                                 </div>
                             </div>
                         </div>

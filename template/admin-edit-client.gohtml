@@ -1,49 +1,57 @@
 {{define "admin-edit-clients"}}
 {{template "header" .HeaderData}}
 {{template "navbar" .}}
-<div class="container-fluid">
-    <div class="row spacer-top-2em">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="mb-0">Profil bearbeiten</h2>
-                    <p>Kunden ID: <span class="red-text">{{.User.ID}}</span>| Status:<span color="red-text">xxxxx</span></p>
-                </div>
-                <div class="card-body">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+<div class="container">
+    <div class="row spacer-top-2em"></div>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Profil bearbeiten</h2>
+            <p>Kunden ID: <span class="red-text">{{.Client.ID}}</span> | Status:<span id="status" class="red-text"> {{.Client.Status}}</span></p>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" onsubmit="return validateForm()" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="username">Benutzername</label>
-                            <input type="text" class="form-control form-control-md" name="username" id="username" required="" value="{{.User.UserName}}">
+                            <input type="text" class="form-control form-control-md" name="username" id="username" required value="{{.Client.UserName}}"/>
                         </div>
                         <div class="form-group">
                             <label for="username">E-Mail-Adresse</label>
-                            <input type="text" class="form-control form-control-md" name="email" id="email" required="" value="{{.User.Email}}">
+                            <input type="text" class="form-control form-control-md" name="email" id="email" required value="{{.Client.Email}}"/>
                         </div>
                         <div class="form-group">
                             <label for="username">Neues Passwort</label>
-                            <input type="password" class="form-control form-control-md" name="new-password" id="new-password" required="">
+                            <input type="password" class="form-control form-control-md" name="password" id="password"/>
                         </div>
                         <div class="form-group">
                             <label for="password">Neues Passwort wiederholen</label>
-                            <input type="password" class="form-control form-control-md" name="new-password-repeat" id="new-password-repeat" required="">
+                            <input type="password" class="form-control form-control-md" name="confirm-password" id="confirm-password"/>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary" id="btn-save-changes">Speichern</button>
-                            <button type="submit" class="btn btn-primary" id="btn-delete-account">Konto sperren</button>
+                    </div>
+                    <div class="col-md-6 my-auto">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <img class="img-fluid" src="{{.User.Image}}" alt="user-img" type="file" name="uploadPic">
+                            </div>
                         </div>
-                    </form>
+                        <div class="row spacer-top-2em">
+                            <!-- <form method="post" enctype="multipart/form-data"> -->
+                            <input class="display-none" id="file-type" type="file" size="4" name="file"/>
+                            <button onclick="uploadFile(this.name)" name="{{.Client.ID}}" type="button" class="btn btn-primary mx-auto" id="btn-upload-file">Bild ändern</button>
+                            <!-- </form> -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <img class="img-fluid mx-auto" src="{{.User.Image}}" alt="user-img">
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary mx-auto" id="btn-change-pic">Bild ändern</button>
-            </div>
+                <div class="row">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" id="btn-save-changes">Speichern</button>
+                        <button type="button" onclick="lockAccount({{.Client.ID}})" class="btn btn-primary" id="btn-delete">Konto sperren</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-{{template "footer"}}
+{{template "footer" .FooterData}}
 {{end}}

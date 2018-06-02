@@ -1,28 +1,35 @@
 {{define "navbar"}}
-<nav class="navbar navbar-expand-sm navbar-light">
+<nav class="navbar navbar-expand-sm navbar-light sticky-top">
     <a class="navbar-brand" href="/">borgdir.media</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" role="navigation">
         {{if .IsLoggedIn}}
-            {{if .User.Admin}}
+            {{if eq .User.Status "Admin"}}
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="/admin/equipment">Equipment</a>
                     <a class="nav-item nav-link" href="/admin/clients">Kunden</a>
-                    <a class="nav-item nav-link" href="/login">Logout</a>
                 </div>
             {{else}}
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="/equipment">Equipment</a>
                     <a class="nav-item nav-link" href="/my-equipment">Meine Geräte</a>
-                    <a class="nav-item nav-link" href="/login">Logout</a>
-                    <a class="nav-item nav-link" href="/cart"><img src="/img/shopping-cart.svg" alt="icon-cart"></a>
+                    <div class="btn-cart">
+                        {{if eq .CartItemCount 0}}
+                            <a class="nav-item nav-link" href="/cart"><img id="img-cart" src="/img/shopping-cart.svg" alt="icon-cart"></a>
+                            <span class="button__badge display-none" id="cart-item-counter">{{.CartItemCount}}</span>
+                        {{else}}
+                            <a class="nav-item nav-link" href="/cart"><img id="img-cart" src="/img/shopping-cart-loaded.svg" alt="icon-cart"></a>
+                            <span class="button__badge" id="cart-item-counter">{{.CartItemCount}}</span>
+                        {{end}}
+                    </div>
                 </div>
             {{end}}
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/profil">{{.User.Name}} {{.User.LastName}}</a>
                 <a class="nav-item nav-link" href="/profil"><img class="user-icon" src="{{.User.Image}}" alt="icon-user"></a>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
             </div>
         {{else}}
             <div class="navbar-nav mr-auto">

@@ -1,53 +1,64 @@
 {{define "profil"}}
 {{template "header" .HeaderData}}
 {{template "navbar" .}}
-<div class="container-fluid">
-    <div class="row spacer-top-2em">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="mb-0">Profil bearbeiten</h2>
-                    <p>Status: <span class="red-text">xxxxxx</span></p>
-                </div>
-                <div class="card-body">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+<div class="container">
+    <div class="row spacer-top-2em"></div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Profil bearbeiten</h2>
+            <p>Status: <span class="red-text">{{.User.Status}}</span></p>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" onsubmit="return validateForm()" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{if .LoginError}}
+                            <div class="form-group"><label class="red-text">Falsches Passwort</label></div>
+                        {{end}}
                         <div class="form-group">
                             <label for="username">Benutzername</label>
-                            <input type="text" class="form-control form-control-md" name="username" id="username" required="" value="{{.User.UserName}}">
+                            <input type="text" class="form-control" name="username" id="username" value="{{.User.UserName}}" required/>
                         </div>
                         <div class="form-group">
-                            <label for="username">E-mail-Adresse</label>
-                            <input type="text" class="form-control form-control-md" name="email" id="email" required="" value="{{.User.Email}}">
+                            <label for="email">E-mail-Adresse</label>
+                            <input type="text" class="form-control" name="email" id="email" required="" value="{{.User.Email}}" required/>
                         </div>
                         <div class="form-group">
-                            <label for="username">Altes Passwort</label>
-                            <input type="password" class="form-control form-control-md" name="old-password" id="old-password" required="" value="{{.User.Password}}">
+                            <label for="old-password">Altes Passwort</label>
+                            <input type="password" class="form-control" name="old-password" id="old-password"/>
                         </div>
                         <div class="form-group">
-                            <label for="username">Neues Passwort</label>
-                            <input type="text" class="form-control form-control-md" name="new-password" id="new-password" required="">
+                            <label for="new-password">Neues Passwort</label>
+                            <input type="password" class="form-control" name="password" id="password"/>
                         </div>
                         <div class="form-group">
-                            <label for="password">Neues Passwort wiederholen</label>
-                            <input type="password" class="form-control form-control-md" name="new-repeat-password" id="new-repeat-password" required="">
+                            <label for="confirm-password">Neues Passwort wiederholen</label>
+                            <input type="password" class="form-control form-control-md" name="confirm-password" id="confirm-password"/>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary" id="btn-save-changes">Änderungen speichern</button>
-                            <button type="submit" class="btn btn-primary" id="btn-delete-account">Konto löschen</button>
+                    </div>
+                    <div class="col-md-6 my-auto">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <img class="img-fluid" src="{{.User.Image}}" alt="user-img" type="file" name="uploadPic">
+                            </div>
                         </div>
-                    </form>
+                        <div class="row spacer-top-2em">
+                            <!-- <form method="post" enctype="multipart/form-data"> -->
+                            <input class="display-none" id="file-type" type="file" size="4" name="file"/>
+                            <button onclick="uploadFile()" type="button" class="btn btn-primary mx-auto" id="btn-upload-file">Bild ändern</button>
+                            <!-- </form> -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <img class="img-fluid mx-auto" src="{{.User.Image}}" alt="user-img">
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary mx-auto" id="btn-change-pic">Bild ändern</button>
-            </div>
+                <div class="row">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                        <button type="button" onclick="deleteAccount()" class="btn btn-primary" id="btn-delete">Konto löschen</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-{{template "footer"}}
+{{template "footer" .FooterData}}
 {{end}}

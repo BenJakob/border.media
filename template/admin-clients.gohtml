@@ -3,61 +3,62 @@
 {{template "navbar" .}}
 <div class="container-fluid">
     <div class="row spacer-top-2em">
-        <h3 class="col-md-6">Kunden</h3>
+        <div class="col-md-6"><h2>Kunden</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 action-spacer">
+            <input type="text" class="form-control" id="search-box" placeholder="Suche">
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="select-category">Kategorie</label>
+                <select class="form-control" id="select-category">
+                    <option value="all">Alle</option>
+                    {{range .UserStatus}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
+            </div>
+        </div>
     </div>
     <div class="row spacer-top-2em">
-        <div class="col-md-3">
-            <form class="form row" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
-                <div class="form-group col-md-8">
-                    <label for="bezeichnung">Username:</label>
-                    <input type="text" class="form-control form-control-lg" name="bezeichnung" id="bezeichnung" required="">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="select-category">Kategorie</label>
-                    <select class="form-control" id="select-category">
-                        <option value="k1">Admins</option>
-                        <option value="k2">Kunden</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-3">Kunde</div>
-        <div class="col-md-4">Ausgeliehenes Equipment</div>
-        <div class="col-md-4">Status</div>
+        <div class="col-md-5">Ausgeliehenes Equipment</div>
+        <div class="col-md-4">Erstellt</div>
     </div>
-    <div class="row">
-        <div class="col-md-11">
-            <hr size="30">
-        </div>
-    </div>
+    <div class="row"><div class="col"><hr size="30"></div></div>
     {{range .Users}}
-        <div class="row">
-            <div class="col-md-1">
-                <img class="img-fluid" src="{{.Image}}" alt="img">
-            </div>
-            <div class="col-md-2">
-                <div>{{.Name}} {{.LastName}}</div>
-                <div>ID: {{.ID}}</div>
-                <div class="red-text">Benutzer</div>
-            </div>
-            <div class="col-md-4">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
-            </div>
-            <div class="col-md-1">
+        <div class="row search-row" name="{{.Name}} {{.LastName}}">
+            <div class="col">
                 <div class="row">
-                    <div>Konto aktiv bis: </div>
-                    <div class="red-text">01.01.2018</div>
+                    <div class="col-md-1">
+                        <img class="img-fluid" src="{{.Image}}" alt="img">
+                    </div>
+                    <div class="col-md-2">
+                        <div name="user-name">{{.Name}} {{.LastName}}</div>
+                        <div>ID: {{.ID}}</div>
+                        <div class="red-text">{{.Status}}</div>
+                    </div>
+                    <div class="col-md-5">
+                        <ul>
+                            {{range .Orders}}
+                            <li><a href="/admin/equipment/edit?id={{.ItemID}}">{{.ItemName}}</a></li>
+                            {{end}}
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row red-text"><div class="col">{{.Created}}</div></div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/admin/edit-client?id={{.ID}}" class="column-btn" role="button">
+                            <img src="/img/pencil-white.svg" alt="icon-pencil">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-2">
-                <a href="/admin/edit-client" class="btn btn-admin btn-md" role="button">
-                    <img class="admin-icon" src="/img/pencil-white.svg" alt="Edit Image">
-                </a>
+                <div class="row"><div class="col"><hr size="30"></div></div>
             </div>
         </div>
     {{end}}
 </div>
-{{template "footer"}}
+{{template "footer" .FooterData}}
 {{end}}

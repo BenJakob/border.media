@@ -6,84 +6,91 @@
         <div class="col-md-6"><h2>Equipment verwalten</h2></div>
     </div>
     <div class="row">
-        <div class="col-sm-1">
-            <a href="/admin/add" class="btn btn-primary" role="button">Equipment hinzufügen</a>
+        <div class="col-md-3 action-spacer">
+            <a href="/admin/add" class="btn btn-primary btn-add-Equipment" role="button">Equipment hinzufügen</a>
         </div>
-        <div class="col-sm-1">
+        <div class="col-md-3 action-spacer">
+            <input type="text" class="form-control" id="search-box" placeholder="Suche">
         </div>
-        <div class="col-sm-2">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle=".dropdown-menu" aria-haspopup="true" aria-expanded="false">Alle</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item">Action</a>
-                        <a class="dropdown-item">Another action</a>
-                        <a class="dropdown-item">Something else here</a>
-                    </div>
-                </div>
-                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="select-category">Kategorie</label>
+                <select class="form-control" id="select-category">
+                    <option value="all">Alle</option>
+                    {{range .Categories}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
             </div>
         </div>
     </div>
-    <div class="row col-sm-12">
+    <div class="row spacer-top-2em">
         <div class="col-sm-3">Equipment</div>
-        <div class="col-sm-4">Beschreibung</div>
+        <div class="col-sm-3">Beschreibung</div>
         <div class="col-sm-4">Status</div>
     </div>
     <div class="row">
-        <div class="col-sm-11">
+        <div class="col-sm-12">
             <hr size="30">
         </div>
     </div>
     {{range .Items}}
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="row search-row" id="row-{{.ID}}" name="{{.Name}}">
+            <div class="col">
                 <div class="row">
                     <div class="col-sm-1">
                         <img class="img-fluid" src="{{.Image}}" alt="img">
                     </div>
                     <div class="col-sm-2">
-                        <div>
-                            <h3>{{.Name}}</h3>
-                        </div>
+                        <div><h4>{{.Name}}</h4></div>
                         <div>Inv.-Nr.: {{.ID}}</div>
-                        <div>Lagerort:<span class="red-text">Schrank</span></div>
+                        <div>Lagerort: <span class="red-text">{{.Location}}</span></div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <p>{{.Description}}</p>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <div class="row">
-                            <div>Entliehen an:</div>
-                            <div>Max Mustermann</div>
+                            <div class="col">Entliehen an:</div>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {{range .Orders}}
+                                <li><a href="/admin/edit-client?id={{.UserID}}">{{.UserName}}</a></li>
+                                {{end}}
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <div class="row">
-                            <div>Rückgabe: </div>
-                            <div><span class="red-text">25.09.2018</span></div>
+                            <div class="col">Rückgabe:</div>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {{range .Orders}}
+                                <li><span class="red-text">{{.EndDate}}</span></li>
+                                {{end}}
+                            </ul>
                         </div>
                     </div>
                     <div class="col-sm-2 row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                            <button type="button" name="button" class="column-btn">
-                                <svg width="30" height="30">
-                                    <image xlink:href="/img/trash-white.svg" width="30" height="30"/>
-                                </svg>
-                            </button>
+                        <div class="col-sm-6">
+                            <a href="/admin/equipment/edit?id={{.ID}}" class="column-btn" role="button">
+                                <img src="/img/pencil-white.svg" alt="icon-pencil">
+                            </a>
                         </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                            <button type="button" name="button" class="column-btn">
-                                <svg width="30" height="30">
-                                    <image xlink:href="/img/pencil-white.svg" width="30" height="30"/>
-                                </svg>
-                            </button>
+                        <div class="col-sm-6">
+                            <a onclick="deleteItem(this.name)" class="column-btn" role="button" name="{{.ID}}">
+                                <img src="/img/trash-white.svg" alt="icon-trash">
+                            </a>
                         </div>
                     </div>
+                </div>
+                <div class="row" id="hr-{{.ID}}"><div class="col"><hr size="30"></div>
                 </div>
             </div>
         </div>
     {{end}}
 </div>
-{{template "footer"}}
+{{template "footer" .FooterData}}
 {{end}}

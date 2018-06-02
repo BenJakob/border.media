@@ -9,14 +9,17 @@
                     <h3 class="mb-0">Login</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    <form class="form" role="form" method="POST">
+                        {{if .LoginError}}
+                            <div class="form-group"><label class="red-text">Fehler bei der Anmeldung</label></div>
+                        {{end}}
                         <div class="form-group">
                             <label for="username">Benutzername</label>
-                            <input type="text" class="form-control form-control-lg" name="username" id="username" required="">
+                            <input type="text" class="form-control form-control-lg" name="username" id="username" required/>
                         </div>
                         <div class="form-group">
                             <label for="password">Passwort</label>
-                            <input type="password" class="form-control form-control-lg" name="password" id="password" required="" autocomplete="new-password">
+                            <input type="password" class="form-control form-control-lg" name="password" id="password" required/>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary" id="btnLogin">Anmelden</button>

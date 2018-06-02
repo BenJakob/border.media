@@ -2,37 +2,43 @@
 {{template "header" .HeaderData}}
 {{template "navbar" .}}
 <div class="container-fluid">
-    <div class="row equipment-row">
+    <div class="row spacer-top-2em">
         <div class="col-md-6"><h2>Equipment</h2></div>
     </div>
     <div class="row">
-        <div class="col-md-2 search-equipment">
+        <div class="col-md-3 action-spacer">
             <input type="text" class="form-control" id="search-equipment" placeholder="Suche">
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="select-category">Kategorie</label>
                 <select class="form-control" id="select-category">
-                    {{range $i, $cat := .Categories}}
-                        <option value="k{{$i}}">{{$cat}}</option>
+                    <option value="all">Alle</option>
+                    {{range .Categories}}
+                        <option value="{{.}}">{{.}}</option>
                     {{end}}
                 </select>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="select-sortorder">Sortieren nach</label>
                 <select class="form-control" id="select-sortorder">
-                    {{range $i, $sort := .SortOptions}}
-                        <option value="s{{$i}}">{{$sort}}</option>
-                    {{end}}
+                    <option value="s1">Name</option>
+                    <option value="s2">Preis</option>
+                    <option value="s3">Kategorie</option>
+                    <option value="s4">Verfügbarkeit</option>
                 </select>
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-sm-12">
+            <hr size="30">
+        </div>
+    </div>
     {{range .Rows}}
-    <div class="row equipment-row">
+    <div class="row spacer-top-2em">
         {{range .Items}}
         <div class="col-md-6">
             <div class="row">
@@ -40,12 +46,21 @@
                     <h3>{{.Name}}</h3>
                     <p>{{.Description}}</p>
                     <div class="row">
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                            <button type="button" name="button" class="btn-primary">Hinzufügen</button>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                            <label class="red-text">{{.Status}}</label>
-                        </div>
+                        {{if .Available}}
+                            <div class="col-md-8 my-auto">
+                                <button onclick="add(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="add-{{.ID}}">Hinzufügen</button>
+                            </div>
+                            <div class="col-md-4 my-auto">
+                                <label class="mx-auto red-text">Verfügbar</label>
+                            </div>
+                        {{else}}
+                            <div class="col-md-8 my-auto">
+                                <button onclick="mark(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="mark-{{.ID}}">Vormerken</button>
+                            </div>
+                            <div class="col-md-4 my-auto">
+                                <label class="mx-auto red-text">Entliehen</label>
+                            </div>
+                        {{end}}
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -54,6 +69,11 @@
             </div>
         </div>
         {{end}}
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <hr size="30">
+        </div>
     </div>
     {{end}}
 </div>

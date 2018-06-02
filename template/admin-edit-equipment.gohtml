@@ -1,11 +1,12 @@
-{{define "admin-add"}}
+{{define "admin-edit-equipment"}}
 {{template "header" .HeaderData}}
 {{template "navbar" .}}
 <div class="container">
-    <div class="row spacer-top-2em"></div>
+    <div class="spacer-top-2em"></div>
     <div class="card">
         <div class="card-header">
-            <h2>Equipment hinzufügen</h2>
+            <h2>Equipment bearbeiten</h2>
+            <div>Inv.-Nr.:<span class="red-text"> {{.Item.ID}}</span></div>
         </div>
         <div class="card-body">
             <form class="form" role="form" autocomplete="off" id="formLogin" method="POST">
@@ -14,7 +15,7 @@
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label for="name">Bezeichnung</label>
-                                <input type="text" class="form-control" name="name" id="name" required/>
+                                <input type="text" class="form-control" name="name" id="name" value="{{.Item.Name}}" required/>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="select-category">Kategorie</label>
@@ -28,7 +29,7 @@
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label for="price">Preis</label>
-                                <input type="number" class="form-control" name="price" id="price" required/>
+                                <input type="number" class="form-control" name="price" id="price" value="{{.Item.Price}}" required/>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="location">Lagerort</label>
@@ -46,20 +47,20 @@
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="quantity">Anzahl</label>
-                                <input type="number" class="form-control" name="quantity" id="quantity" required/>
+                                <input type="number" class="form-control" name="quantity" id="quantity" value="{{.Item.Quantity}}" required/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-12">
                                 <label for="description">Beschreibung</label>
-                                <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                                <textarea class="form-control" rows="5" name="description" id="description">{{.Item.Description}}</textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4 my-auto">
                         <div class="row">
                             <div class="col-md-10 mx-auto">
-                                <img class="img-fluid" src="/img/image.svg" alt="Upload Image">
+                                <img class="img-fluid" src="{{.Item.Image}}" alt="Upload Image">
                             </div>
                         </div>
                         <div class="row spacer-top-2em">
@@ -70,6 +71,7 @@
                 </div>
                 <div class="row">
                     <button type="submit" class="btn btn-primary" id="btn-save">Speichern</button>
+                    <button type="button" onclick="deleteItem(this.name)" class="btn btn-primary" id="btn-delete" name="{{.Item.ID}}">Equipment löschen</button>
                 </div>
             </form>
         </div>
