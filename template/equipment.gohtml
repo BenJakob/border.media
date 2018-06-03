@@ -24,10 +24,10 @@
             <div class="form-group">
                 <label for="select-sortorder">Sortieren nach</label>
                 <select class="form-control" id="select-sortorder">
-                    <option value="s1">Name</option>
-                    <option value="s2">Preis</option>
-                    <option value="s3">Kategorie</option>
-                    <option value="s4">Verfügbarkeit</option>
+                    <option value="none"></option>
+                    <option value="name">Name</option>
+                    <option value="price">Preis</option>
+                    <option value="category">Kategorie</option>
                 </select>
             </div>
         </div>
@@ -37,34 +37,34 @@
             <hr size="30">
         </div>
     </div>
-    <div class="row spacer-top-2em">
+    <div class="row spacer-top-2em elements">
     {{range .Items}}
-    <div class="col-md-6 search-row" name="{{.Name}}">
+    <div class="col-md-6 filter-element" data-name="{{.Name}}" data-price={{.Price}} data-category="{{.Category}}">
         <div class="row">
             <div class="col-md-8">
                 <h3>{{.Name}}</h3>
                 <p id="description-field">{{.Description}}</p>
-                <div class="row">
-                    {{if .Available}}
-                        <div class="col-md-6 my-auto">
-                            <button onclick="add(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="add-{{.ID}}">Hinzufügen</button>
-                        </div>
-                        <div class="col-md-6 text-center my-auto">
-                            <label class="mx-auto red-text">Verfügbar</label>
-                        </div>
-                    {{else}}
-                        <div class="col-md-6 my-auto">
-                            <button onclick="mark(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="mark-{{.ID}}">Vormerken</button>
-                        </div>
-                        <div class="col-md-6 text-center my-auto">
-                            <label class="red-text">Entliehen</label>
-                        </div>
-                    {{end}}
-                </div>
             </div>
             <div class="col-md-4">
                 <img class="img-fluid item-img" src="{{.Image}}" alt="Item Image">
             </div>
+        </div>
+        <div class="row">
+            {{if .Available}}
+                <div class="col-md-6 my-auto">
+                    <button onclick="add(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="add-{{.ID}}">Hinzufügen</button>
+                </div>
+                <div class="col-md-6 text-center my-auto">
+                    <label class="mx-auto red-text">Verfügbar</label>
+                </div>
+            {{else}}
+                <div class="col-md-6 my-auto">
+                    <button onclick="mark(this.name, this.id)" class="btn btn-primary" name={{.ID}} id="mark-{{.ID}}">Vormerken</button>
+                </div>
+                <div class="col-md-6 text-center my-auto">
+                    <label class="red-text">Entliehen</label>
+                </div>
+            {{end}}
         </div>
         <div class="row"><div class="col"><hr size="30"></div></div>
     </div>

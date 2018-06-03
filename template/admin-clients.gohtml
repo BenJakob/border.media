@@ -28,7 +28,7 @@
     </div>
     <div class="row"><div class="col"><hr size="30"></div></div>
     {{range .Users}}
-        <div class="row search-row" name="{{.Name}} {{.LastName}}">
+        <div class="row filter-element" id="row-{{.ID}}" data-name="{{.Name}} {{.LastName}}" data-category="{{.Status}}">
             <div class="col">
                 <div class="row">
                     <div class="col-md-1">

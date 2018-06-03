@@ -3,7 +3,7 @@ function add(itemId, buttonId) {
     var counter = $("#cart-item-counter")
     var count = parseInt(counter.text()) + 1
     if (count > 0) {
-        counter.removeClass("display-none");
+        counter.show();
         $("#img-cart").attr("src", "/img/shopping-cart-loaded.svg")
     }
     counter.text(count)
@@ -13,9 +13,4 @@ function add(itemId, buttonId) {
 function mark(itemId, buttonId) {
     $.get('/equipment/mark', { id: itemId });
     $("#" + buttonId).blur()
-}
-
-function orderBy() {
-    var value = $("select-sortorder").val()
-    window.location.href = "/admin/equipment?order=" + value;
 }

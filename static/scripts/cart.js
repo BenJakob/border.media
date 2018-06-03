@@ -13,7 +13,7 @@ function remove(itemId) {
     var counter = $("#cart-item-counter")
     var count = parseInt(counter.text()) + -1
     if (count < 1) {
-        counter.addClass("display-none");
+        counter.hide()
         $("#img-cart").attr("src", "/img/shopping-cart.svg")
     }
     counter.text(count)

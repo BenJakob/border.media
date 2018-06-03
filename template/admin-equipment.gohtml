@@ -35,7 +35,7 @@
         </div>
     </div>
     {{range .Items}}
-        <div class="row search-row" id="row-{{.ID}}" name="{{.Name}}">
+        <div class="row filter-element" id="row-{{.ID}}" data-name="{{.Name}}" data-price={{.Price}} data-category="{{.Category}}">
             <div class="col">
                 <div class="row">
                     <div class="col-sm-1">
