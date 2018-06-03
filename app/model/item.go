@@ -80,9 +80,9 @@ func GetItem(id int) (Item, error) {
 		FROM item
 		INNER JOIN [Item Category] ON Item.Category = [Item Category].ID
 		INNER JOIN Location ON Item.Location = Location.ID
-		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [Start Date] >= $1 AND [End Date] <= $2
-		WHERE Item.ID = $3
-		GROUP BY item.id`, timeNow, timeNow, id).Scan(&item.ID, &item.Name, &item.Description, &item.Image, &item.Location, &item.Category, &item.Price, &item.Quantity, &quantityAvailable)
+		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [End Date] >= $1
+		WHERE Item.ID = $2
+		GROUP BY item.id`, timeNow, id).Scan(&item.ID, &item.Name, &item.Description, &item.Image, &item.Location, &item.Category, &item.Price, &item.Quantity, &quantityAvailable)
 	checkErr(err)
 
 	if quantityAvailable > 0 {
@@ -102,8 +102,8 @@ func GetItems() []Item {
 		FROM item
 		INNER JOIN [Item Category] ON Item.Category = [Item Category].ID
 		INNER JOIN Location ON Item.Location = Location.ID
-		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [Start Date] >= $1 AND [End Date] <= $2
-		GROUP BY item.id`, timeNow, timeNow,
+		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [End Date] >= $2
+		GROUP BY item.id`, timeNow,
 	)
 	checkErr(err)
 
@@ -132,8 +132,8 @@ func GetItemsAndOrders() []Item {
 		FROM item
 		INNER JOIN [Item Category] ON Item.Category = [Item Category].ID
 		INNER JOIN Location ON Item.Location = Location.ID
-		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [Start Date] >= $1 AND [End Date] <= $2
-		GROUP BY item.id`, timeNow, timeNow,
+		LEFT JOIN [Ledger Entry] AS Stock on Item.ID = Stock.[Item ID] AND (Stock.Type = 2 OR Stock.Type = 3) AND [End Date] >= $2
+		GROUP BY item.id`, timeNow,
 	)
 	checkErr(err)
 
