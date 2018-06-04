@@ -14,23 +14,24 @@ type CartItem struct {
 }
 
 func CreateCartItem(user User, item Item) {
-	statement := "INSERT INTO Cart([User ID], [Item ID], Quantity, [End Date]) VALUES ($1, $2, $3, $4)"
+	statement := "INSERT INTO [Ledger Entry](Type, [User ID], [Item ID], Quantity, [Start Date], [End Date]) VALUES ($1, $2, $3, $4, $5, $6)"
 	stmt, err := db.Prepare(statement)
 	checkErr(err)
 
-	endDate := time.Now().AddDate(0, 0, 7).Format(dbDateLayout)
+	startDate := time.Now().Format(dbDateLayout)
+	endDate := time.Now().AddDate(0, 0, 1).Format(dbDateLayout)
 
 	defer stmt.Close()
-	_, err = stmt.Exec(user.ID, item.ID, 1, endDate)
+	_, err = stmt.Exec(1, user.ID, item.ID, 1, startDate, endDate)
 	return
 }
 
 func GetCartItems(user User) []CartItem {
 	rows, err := db.Query(`
-        SELECT Cart.ID, [User ID], [Item ID], Item.Name, Item.Description, Item.Image, Cart.Quantity, [End Date]
-        FROM Cart
-        INNER JOIN Item ON Cart.[Item ID] = Item.ID
-        WHERE [User ID] = $1`, user.ID,
+        SELECT [Ledger Entry].ID, [User ID], [Item ID], Item.Name, Item.Description, Item.Image, [Ledger Entry].Quantity, [End Date]
+        FROM [Ledger Entry]
+        INNER JOIN Item ON [Ledger Entry].[Item ID] = Item.ID
+        WHERE [User ID] = $1 AND [Type] = 1`, user.ID,
 	)
 	checkErr(err)
 
@@ -50,8 +51,14 @@ func GetCartItems(user User) []CartItem {
 	return items
 }
 
+// func UpdateCartItemQuantity(id int, quantity int) {
+// 	_, err = db.Exec("UPDATE Cart SET Quantity = $1 WHERE ID = $2", quantity, id)
+// 	checkErr(err)
+// 	return
+// }
+
 func UpdateCartItemQuantity(id int, quantity int) {
-	_, err = db.Exec("UPDATE Cart SET Quantity = $1 WHERE ID = $2", quantity, id)
+	_, err = db.Exec("UPDATE [Ledger Entry] SET Quantity = $1 WHERE ID = $2", quantity, id)
 	checkErr(err)
 	return
 }
@@ -59,40 +66,32 @@ func UpdateCartItemQuantity(id int, quantity int) {
 func UpdateCartItemDate(id int, date string) {
 	parsedDate, err := time.Parse(localDateLayoutInputField, date)
 	checkErr(err)
-	_, err = db.Exec("UPDATE Cart SET [End Date] = $1 WHERE ID = $2", parsedDate.Format(dbDateLayout), id)
+	_, err = db.Exec("UPDATE [Ledger Entry] SET [End Date] = $1 WHERE ID = $2", parsedDate.Format(dbDateLayout), id)
 	checkErr(err)
 	return
 }
 
 func DeleteCartItem(id int) {
-	_, err = db.Exec("DELETE FROM Cart WHERE id = $1", id)
+	_, err = db.Exec("DELETE FROM [Ledger Entry] WHERE id = $1", id)
 	checkErr(err)
 	return
 }
 
 func DeleteCartItemsByUser(user User) {
-	_, err = db.Exec("DELETE FROM Cart WHERE [User ID] = $1", user.ID)
+	_, err = db.Exec("DELETE FROM [Ledger Entry] WHERE [User ID] = $1 AND Type = 1", user.ID)
 	checkErr(err)
 	return
 }
 
 func CheckoutCart(user User) {
-	items := GetCartItems(user)
-
-	for _, element := range items {
-		item, err := GetItem(element.ItemID)
-		checkErr(err)
-		parsedDate, err := time.Parse(localDateLayoutInputField, element.EndDate)
-		checkErr(err)
-		CreateEntry(user, item, parsedDate.Format(dbDateLayout), 3, element.Quantity)
-	}
-
-	DeleteCartItemsByUser(user)
+	_, err = db.Exec("UPDATE [Ledger Entry] SET Type = $1 WHERE [User ID] = $2 AND Type = 1", 3, user.ID)
+	checkErr(err)
+	return
 }
 
 func GetCartItemCount(user User) int {
 	var count int
-	err = db.QueryRow("SELECT COUNT(ID) FROM Cart WHERE [User ID] = $1", user.ID).Scan(&count)
+	err = db.QueryRow("SELECT COUNT(ID) FROM [Ledger Entry] WHERE [User ID] = $1 AND Type = 1", user.ID).Scan(&count)
 	checkErr(err)
 	return count
 }

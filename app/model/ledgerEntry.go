@@ -150,7 +150,7 @@ func ExtendEntry(id int) {
 	checkErr(err)
 	parsedDate, err := time.Parse(dbDateLayout, entry.EndDate)
 	checkErr(err)
-	newEndDate := parsedDate.AddDate(0, 0, 7).Format(dbDateLayout)
+	newEndDate := parsedDate.AddDate(0, 0, 1).Format(dbDateLayout)
 	_, err = db.Exec("UPDATE [Ledger Entry] SET [End Date] = $1 where id = $2", newEndDate, id)
 	checkErr(err)
 	return
