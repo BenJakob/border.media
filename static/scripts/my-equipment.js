@@ -1,7 +1,7 @@
 function extend(itemId) {
     $.get("/my-equipment/extend", { id: itemId });
     var oldDate = $("#date-" + itemId).text();
-    var newDate = moment(oldDate, "DD.MM.YYYY").add('days', 7);
+    var newDate = moment(oldDate, "DD.MM.YYYY").add('days', 1);
     $("#date-" + itemId).text(newDate.format("DD.MM.YYYY"));
     $("#btn-" + itemId).blur()
 }
