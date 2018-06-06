@@ -14,7 +14,7 @@ var localDateLayout = "02.01.2006"
 var localDateLayoutInputField = "2006-01-02"
 
 func init() {
-	db, err = sql.Open("sqlite3", "app/model/Web.db")
+	db, err = sql.Open("sqlite3", "app/data/Web.db")
 	checkErr(err)
 }
 
